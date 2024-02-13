@@ -24,4 +24,9 @@ module.exports = {
     'no-multiple-empty-lines': 'error',
     'prefer-const': 'error',
   },
+  parserOptions: {
+    project: "tsconfig.json",
+    tsconfigRootDir: __dirname,
+    sourceType: "module",
+  },
 };

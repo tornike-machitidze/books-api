@@ -1,5 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from 'typeorm';
-import { PageEntity } from '../page/page.entity';
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
 
 @Entity('book')
 export class BookEntity extends BaseEntity {
@@ -9,11 +8,11 @@ export class BookEntity extends BaseEntity {
   @Column()
   title!: string;
 
-  @OneToMany(() => PageEntity, (page) => page.book)
-  pages!: PageEntity[];
+  @Column()
+  content!: string;
 
   @Column()
-  lastPage!: string;
+  lastPage!: number;
 
   @Column()
   author!: string;

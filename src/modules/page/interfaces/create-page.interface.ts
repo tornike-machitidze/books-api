@@ -1,4 +1,4 @@
-export interface CreatePageInterface {
-  pageNumber: number;
-  content: string;
-}
+// export interface CreatePageInterface {
+//   pageNumber: number;
+//   content: string;
+// }
