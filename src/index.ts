@@ -1,9 +1,38 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express } from 'express';
+import 'reflect-metadata';
+
+import { connectToPostgresDB } from './database';
+import routes from './routes';
+
+import 'dotenv/config';
 
 const app: Express = express();
 
-app.get('/', (req: Request, res: Response) => {
-  res.status(200).send('Hi there!');
-})
+(async (app: Express) => {
+  try {
+    // connect to db
+    await connectToPostgresDB();
 
-app.listen(3000, () => console.log('Server is started on port ' + 3000));
+    app.use(express.json());
+
+    // register routes
+    app.use('/api', routes);
+
+    const PORT = Number(process.env.API_PORT) || 3000;
+
+    process.on('uncaughtException', (err) => {
+      console.error('Uncaught exception:', err);
+    });
+
+    process.on('unhandledRejection', (reason) => {
+      console.error('Unhandled rejection:', reason);
+    });
+
+    // start listening
+    app.listen(PORT, () => {
+      console.log(`Server started on port ${PORT}`);
+    });
+  } catch (err: unknown) {
+    console.log('Server startup failed! ❌.', err);
+  }
+})(app);
