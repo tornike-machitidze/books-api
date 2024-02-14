@@ -9,7 +9,7 @@ DONE:
 - get books ✅
 - get book by id ✅
 - update book ✅
-- update las page ✅
+- update last page ✅
 - create book ✅
 
 IN PROGRESS:
@@ -25,15 +25,24 @@ STEPS TO START:
    To Start run:
 2. from the root dir run: `npm install`
 
-### If you have docker-compose installed and docker runned
+### Option 1: If you have docker-compose installed and docker runned
 
 3. from the root dir run: `docker-compose up` it will starts postgres local server in a new container
 
 4. from the root dir run: `npm run dev`
 
-### If you do not have docker and docker compose
+### Option 2: If you do not have docker and docker compose
 
-3. install postgres server localy in you computer. you can see credentials in .env.example file
+3. install postgres server locally in you computer.
+
+- you can see postgres credentials (in .env.example file):
+  database = books
+  username = root
+  password = root
+  host = localhost
+  port = 5432
+
+  ### Finally:
 
 4. from the root dir run: `npm run dev`
 

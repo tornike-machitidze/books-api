@@ -12,7 +12,7 @@ export class BookController {
 
   async getBooks(req: Request, res: Response) {
     try {
-      const books = await bookService.getBooks();
+      const books = await this.bookService.getBooks();
       res.status(200).json({ data: books });
     } catch (err) {
       console.log(err);
@@ -23,7 +23,7 @@ export class BookController {
   async getBook(req: Request, res: Response) {
     try {
       const { id } = req.params;
-      const book = await bookService.getBook(id);
+      const book = await this.bookService.getBook(id);
 
       if (!book) return res.status(404).json({ error: 'Book was not found!' });
 
@@ -37,7 +37,7 @@ export class BookController {
   async createBook(req: Request, res: Response) {
     try {
       const book: CreateBookInterface = req.body;
-      const created = await bookService.createBook(book);
+      const created = await this.bookService.createBook(book);
       res.status(201).json({ data: created });
     } catch (err) {
       console.error(err);
@@ -49,7 +49,7 @@ export class BookController {
     try {
       const { id } = req.params;
       const props: UpdateBookInterface = req.body;
-      const book = await bookService.updateBook(id, props);
+      const book = await this.bookService.updateBook(id, props);
       if (!book) return res.status(404).json({ error: 'Book was not found!' });
       res.sendStatus(204);
     } catch (err) {
@@ -61,7 +61,7 @@ export class BookController {
   async deleteBook(req: Request, res: Response) {
     try {
       const { id } = req.params;
-      const book = await bookService.deleteBook(id);
+      const book = await this.bookService.deleteBook(id);
       if (!book) return res.status(404).json({ error: 'Book was not found!' });
       res.status(200).json({ data: book });
     } catch (err) {

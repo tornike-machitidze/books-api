@@ -1,7 +1,7 @@
+/* eslint-disable prettier/prettier */
 import { Request, Response, NextFunction } from 'express';
 import * as jwt from 'jsonwebtoken';
-// import { ICurrentUser } from '../database/model/user.model';
-// import logger from '../logger/logger';
+import { UserInterface } from '../modules/user/user.interface';
 
 export const verifyToken = async (req: Request, res: Response, next: NextFunction) => {
   const authHeaders = req.headers.authorization;
@@ -17,11 +17,11 @@ export const verifyToken = async (req: Request, res: Response, next: NextFunctio
   }
 
   try {
-    const user = jwt.verify(token, process.env.TOKEN_KEY!) as ICurrentUser;
+    const user = jwt.verify(token, process.env.JWT_SECRET_OR_KEY!) as UserInterface;
 
     req.user = user;
   } catch (error) {
-    return res.status(401).send('Invalid Token');
+    return res.status(401).send('Unauthorized');
   }
 
   return next();

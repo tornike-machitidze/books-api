@@ -1,5 +1,6 @@
 import { DataSource, EntityTarget, ObjectLiteral } from 'typeorm';
 import { BookEntity } from '../modules/book/book.entity';
+import { UserEntity } from '../modules/user/user.entity';
 // import { PageEntity } from '../modules/page/page.entity';
 
 let dataSource: DataSource;
@@ -16,7 +17,7 @@ export const connectToPostgresDB = async () => {
       username: process.env.PGSQL_USERNAME,
       password: process.env.PGSQL_PASSWORD,
       database: process.env.PGSQL_DB,
-      entities: [BookEntity],
+      entities: [BookEntity, UserEntity],
       synchronize: true,
     });
 
