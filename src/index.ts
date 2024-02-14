@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import express, { Express } from 'express';
 import 'reflect-metadata';
 
@@ -5,34 +6,32 @@ import { connectToPostgresDB } from './database';
 import routes from './routes';
 
 import 'dotenv/config';
+const PORT: number = Number(process.env.API_PORT) || 3000;
 
-const app: Express = express();
+export const createServer = () => {
+  const server: Express = express();
+  server.use(express.json());
 
-(async (app: Express) => {
-  try {
-    // connect to db
-    await connectToPostgresDB();
+  // register routes
+  server.use('/api', routes);
+  return server;
+};
 
-    app.use(express.json());
+const app = createServer();
 
-    // register routes
-    app.use('/api', routes);
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught exception:', err);
+});
 
-    const PORT = Number(process.env.API_PORT) || 3000;
+process.on('unhandledRejection', (reason) => {
+  console.error('Unhandled rejection:', reason);
+});
 
-    process.on('uncaughtException', (err) => {
-      console.error('Uncaught exception:', err);
-    });
+// start listening
+app.listen(PORT, async () => {
+  console.log(`Server started on port ${PORT}`);
 
-    process.on('unhandledRejection', (reason) => {
-      console.error('Unhandled rejection:', reason);
-    });
+  await connectToPostgresDB();
+});
 
-    // start listening
-    app.listen(PORT, () => {
-      console.log(`Server started on port ${PORT}`);
-    });
-  } catch (err: unknown) {
-    console.log('Server startup failed! ❌.', err);
-  }
-})(app);
+export default app;
