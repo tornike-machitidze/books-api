@@ -1,0 +1,14 @@
+{
+  "testMatch": ["**/+(*.)+(spec|test).+(ts|js)?(x)"],
+  "testEnvironment": "node",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "moduleFileExtensions": ["ts", "js", "html"],
+  "coverageDirectory": "coverage",
+  "globals": {
+    "ts-jest": {
+      "tsConfig": "tsconfig.json"
+    }
+  }
+}

@@ -8,16 +8,16 @@ import routes from './routes';
 import 'dotenv/config';
 const PORT: number = Number(process.env.API_PORT) || 3000;
 
-export const createServer = () => {
-  const server: Express = express();
-  server.use(express.json());
+const app: Express = express();
 
-  // register routes
-  server.use('/api', routes);
-  return server;
-};
+app.use(express.json());
 
-const app = createServer();
+(async () => {
+  await connectToPostgresDB();
+})();
+
+// register routes
+app.use('/api', routes);
 
 process.on('uncaughtException', (err) => {
   console.error('Uncaught exception:', err);
@@ -28,10 +28,8 @@ process.on('unhandledRejection', (reason) => {
 });
 
 // start listening
-app.listen(PORT, async () => {
+const server = app.listen(PORT, async () => {
   console.log(`Server started on port ${PORT}`);
-
-  await connectToPostgresDB();
 });
 
-export default app;
+export default server;

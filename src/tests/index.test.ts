@@ -1,11 +1,10 @@
 /* eslint-disable no-undef */
 /* eslint-disable prettier/prettier */
 import supertest from 'supertest';
-import { createServer } from '../index';
-import bookService from '../modules/book/book.service';
+import app from '../index';
+// import bookService from '../modules/book/book.service';
 
 // const bookId = '8ad48acf-3edd-4c74-9c7b-a2c26d5686d8';
-const app = createServer();
 
 export const bookPayload = {
   title: 'The Idiot',
@@ -18,7 +17,7 @@ describe('book', () => {
   describe('get book route', () => {
     describe('given the book does not exist', () => {
       it('should return a 404', async () => {
-        const bookId = 'product-123';
+        const bookId = 'book-123';
 
         await supertest(app).get(`/api/books/${bookId}`).expect(404);
       });
@@ -40,11 +39,8 @@ describe('book', () => {
 
   describe('create book route', () => {
     describe('given the user is auth', () => {
-      it('should return a 200 and create the book', async () => {
-        const { statusCode, body } = await supertest(app)
-          .post('/api/books/')
-          .set('Authorization', `Bearer token`)
-          .send(bookPayload);
+      it('should return a 201 and create the book', async () => {
+        const { statusCode, body } = await supertest(app).post('/api/books').send(bookPayload);
 
         expect(statusCode).toBe(201);
 
