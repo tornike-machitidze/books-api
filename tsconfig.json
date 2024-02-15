@@ -1,5 +1,5 @@
 {
-  "include": ["src"], // compile TS files in src directory
+  "include": ["src", "test"], // compile TS files in src directory
   "compilerOptions": {
     "outDir": "dist",
     "module": "commonjs", // classic format that Node.js understands

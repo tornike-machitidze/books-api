@@ -12,7 +12,13 @@ export class BookService {
   }
 
   async getBook(id: string) {
-    return await getRepository(BookEntity).findOneBy({ id });
+    try {
+      const book = await getRepository(BookEntity).findOneBy({ id });
+      return book;
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
   }
 
   async createBook(bookData: CreateBookInterface) {
