@@ -6,28 +6,27 @@ API
 
 DONE:
 
+- swagger ✅ ( in progress ... )
 - get books ✅
 - get book by id ✅
 - update book ✅
 - update last page ✅
 - create book ✅
+- authorization/authtentication ✅
 
 IN PROGRESS:
 
-- swagger ❌
 - tests ❌
 - pagination ❌
-- authorization/authtentication ❌
 
 STEPS TO START:
 
 1. clone the ripo
-   To Start run:
 2. from the root dir run: `npm install`
 
 ### Option 1: If you have docker-compose installed and docker runned
 
-3. from the root dir run: `docker-compose up` it will starts postgres local server in a new container
+3. from the root dir run: `docker-compose up` it will starts postgres local server and awagger ui
 
 4. from the root dir run: `npm run dev`
 
@@ -47,4 +46,7 @@ STEPS TO START:
 4. from the root dir run: `npm run dev`
 
 you can test api on port
-http://localhost:8080/api/books
+
+Swagger: http://localhost:8081/swagger
+
+API: http://localhost:8080/api/books
