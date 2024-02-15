@@ -16,7 +16,8 @@ DONE:
 
 IN PROGRESS:
 
-- tests ❌
+- tests ❌ (in progress ...)
+- store book content as pages ❌ (in progress ...)
 
 STEPS TO START:
 
