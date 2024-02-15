@@ -52,3 +52,7 @@ you can test api on port
 Swagger: http://localhost:8081/swagger
 
 API: http://localhost:8080/api/books
+
+## Tests
+
+run: `npm run test`
