@@ -53,6 +53,13 @@ paths:
               properties:
                 data:
                   $ref: '#/components/schemas/unauthorized'
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              properties:
+                error:
+                  type: string
   /books/{id}:
     get:
       tags:
@@ -74,6 +81,13 @@ paths:
                 properties:
                   data:
                     $ref: '#/components/schemas/book'
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              properties:
+                error:
+                  type: string
     patch:
       tags:
         - books
@@ -93,7 +107,14 @@ paths:
               $ref: '#/components/schemas/create-book'
       responses:
         '204':
-          description: a book data
+          description: Book was updated
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              properties:
+                error:
+                  type: string
   /users/sign-up:
     post:
       tags:
@@ -113,6 +134,28 @@ paths:
               properties:
                 data:
                   type: boolean
+        '403':
+          description: Incorrect user data
+          content:
+            application/json:
+              properties:
+                error:
+                  type: string
+        '409':
+          description: User exists
+          content:
+            application/json:
+              properties:
+                error:
+                  type: string
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              properties:
+                error:
+                  type: string
+
   /users/sign-in:
     post:
       tags:
@@ -131,6 +174,13 @@ paths:
             application/json:
               properties:
                 data:
+                  type: string
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              properties:
+                error:
                   type: string
 
 components:
