@@ -7,13 +7,13 @@ export const verifyToken = async (req: Request, res: Response, next: NextFunctio
   const authHeaders = req.headers.authorization;
 
   if (!authHeaders) {
-    return res.status(401).json({ message: 'Token is required' });
+    return res.status(401).json({ error: 'Token is required' });
   }
 
   const [tokenType, token] = authHeaders.split(' ');
 
   if (tokenType !== 'Bearer') {
-    return res.status(403).json({ message: 'Invalid token' });
+    return res.status(403).json({ error: 'Invalid token' });
   }
 
   try {
@@ -21,7 +21,7 @@ export const verifyToken = async (req: Request, res: Response, next: NextFunctio
 
     req.user = user;
   } catch (error) {
-    return res.status(401).send('Unauthorized');
+    return res.status(401).send({ error: 'Unauthorized' });
   }
 
   return next();

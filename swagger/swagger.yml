@@ -20,6 +20,41 @@ tags:
     description: 'Login with email'
 
 paths:
+  /books:
+    post:
+      tags:
+        - books
+      summary: Create a book
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Create a book
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/create-book'
+      responses:
+        '201':
+          description: Create a book
+          content:
+            application/json:
+              properties:
+                data:
+                  $ref: '#/components/schemas/book'
+        '401':
+          description: JWT token is not provided
+          content:
+            application/json:
+              properties:
+                data:
+                  $ref: '#/components/schemas/unauthorized'
+        '403':
+          description: JWT token is not valid
+          content:
+            application/json:
+              properties:
+                data:
+                  $ref: '#/components/schemas/unauthorized'
   /books/{id}:
     get:
       tags:
@@ -40,4 +75,40 @@ paths:
               schema:
                 properties:
                   data:
-                    type: string
+                    $ref: '#/components/schemas/book'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    book:
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        content:
+          type: string
+        lastPage:
+          type: number
+        author:
+          type: string
+    create-book:
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        content:
+          type: string
+        lastPage:
+          type: number
+        author:
+          type: string
+    unauthorized:
+      properties:
+        message:
+          type: string
