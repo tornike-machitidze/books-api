@@ -6,7 +6,7 @@ API
 
 DONE:
 
-- swagger ✅ ( in progress ... )
+- swagger ✅
 - get books ✅
 - get book by id ✅
 - update book ✅

@@ -14,10 +14,8 @@ servers:
 tags:
   - name: 'books'
     description: 'Api for books'
-  - name: 'sigh-up'
-    description: 'User registration'
-  - name: 'sign-in'
-    description: 'Login with email'
+  - name: 'users'
+    description: 'User registration and login'
 
 paths:
   /books:
@@ -76,6 +74,65 @@ paths:
                 properties:
                   data:
                     $ref: '#/components/schemas/book'
+    patch:
+      tags:
+        - books
+      summary: Update a book data
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: book id
+      requestBody:
+        description: Create a book
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/create-book'
+      responses:
+        '204':
+          description: a book data
+  /users/sign-up:
+    post:
+      tags:
+        - users
+      summary: Create a user
+      requestBody:
+        description: Create a user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/create-user'
+      responses:
+        '201':
+          description: Create a user
+          content:
+            application/json:
+              properties:
+                data:
+                  type: boolean
+  /users/sign-in:
+    post:
+      tags:
+        - users
+      summary: Login a user
+      requestBody:
+        description: Login a user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/create-user'
+      responses:
+        '200':
+          description: Login a user
+          content:
+            application/json:
+              properties:
+                data:
+                  type: string
+
 components:
   securitySchemes:
     bearerAuth:
@@ -107,6 +164,12 @@ components:
         lastPage:
           type: number
         author:
+          type: string
+    create-user:
+      properties:
+        email:
+          type: string
+        password:
           type: string
     unauthorized:
       properties:
