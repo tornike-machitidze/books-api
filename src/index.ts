@@ -1,9 +1,10 @@
-/* eslint-disable prettier/prettier */
 import 'reflect-metadata';
 
 import 'dotenv/config';
 import createApp from './app';
-const PORT: number = Number(process.env.API_PORT) || 8080;
+import config from './config';
+
+const PORT = config.PORT;
 
 const app = createApp();
 

@@ -1,22 +1,23 @@
 import { DataSource, EntityTarget, ObjectLiteral } from 'typeorm';
 import { BookEntity } from '../modules/book/book.entity';
 import { UserEntity } from '../modules/user/user.entity';
-// import { PageEntity } from '../modules/page/page.entity';
+import config from '../config';
 
 let dataSource: DataSource;
+let AppDataSource: DataSource;
 
 /**
  * Database connection
  */
 export const connectToPostgresDB = async () => {
   try {
-    const AppDataSource = new DataSource({
+    AppDataSource = new DataSource({
       type: 'postgres',
-      host: process.env.PGSQL_HOST,
-      port: Number(process.env.PGSQL_PORT),
-      username: process.env.PGSQL_USERNAME,
-      password: process.env.PGSQL_PASSWORD,
-      database: process.env.PGSQL_DB,
+      host: config.PGSQL_HOST,
+      port: Number(config.PGSQL_DOCKER_PORT),
+      username: config.PGSQL_USERNAME,
+      password: config.PGSQL_PASSWORD,
+      database: config.PGSQL_DB,
       entities: [BookEntity, UserEntity],
       synchronize: true,
     });
@@ -29,6 +30,15 @@ export const connectToPostgresDB = async () => {
     console.log(error);
     // breakes the app if not connected
     throw new Error('Can not connect to database');
+  }
+};
+
+export const closeConnection = async () => {
+  try {
+    await AppDataSource.destroy();
+    return true;
+  } catch (err) {
+    console.log('Connection was not closed');
   }
 };
 

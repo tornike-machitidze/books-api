@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import express, { Express } from 'express';
 import cors from 'cors';
 

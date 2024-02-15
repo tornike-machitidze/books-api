@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-/* eslint-disable prettier/prettier */
 import request from 'supertest';
 import createApp from '../src/app';
 
