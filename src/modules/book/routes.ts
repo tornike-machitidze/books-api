@@ -11,8 +11,8 @@ router.get('/:id', bookController.getBook.bind(bookController));
 
 router.post('/', verifyToken, bookController.createBook.bind(bookController));
 
-router.patch('/:id', verifyToken, bookController.updateBook.bind(bookController));
+router.patch('/:id', bookController.updateBook.bind(bookController));
 
-router.delete('/:id', verifyToken, bookController.deleteBook.bind(bookController));
+router.delete('/:id', bookController.deleteBook.bind(bookController));
 
 export default router;

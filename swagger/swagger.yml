@@ -1,0 +1,43 @@
+openapi: 3.0.0
+info:
+  title: Books API
+  description: Books api
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    name: 'API Support'
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: 'http://swagger.io'
+servers:
+  - url: http://localhost:8080/api
+tags:
+  - name: 'books'
+    description: 'Api for books'
+  - name: 'sigh-up'
+    description: 'User registration'
+  - name: 'sign-in'
+    description: 'Login with email'
+
+paths:
+  /books/{id}:
+    get:
+      tags:
+        - books
+      summary: Get a book data
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: book Id
+      responses:
+        '200':
+          description: a book data
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: string

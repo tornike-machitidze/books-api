@@ -1,0 +1,10 @@
+swagger-ui:
+  image: swaggerapi/swagger-ui
+  ports:
+    - '8081:8080'
+  volumes:
+    - ./swagger:/doc
+  restart: always
+  environment:
+    SWAGGER_JSON: /doc/swagger.yml
+    BASE_URL: /swagger
