@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Request, Response, NextFunction } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { UserInterface } from '../modules/user/user.interface';

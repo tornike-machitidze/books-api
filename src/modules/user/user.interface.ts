@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 export interface RegisterUserInterface {
   email: string;
   password: string;

@@ -1,7 +1,6 @@
-/* eslint-disable prettier/prettier */
 import crypto from 'crypto';
 
-// TODO:move it to env
+// TODO:move it to env (JUST for testing)
 const salt = 'f844b09ff50c';
 
 export class Hash {

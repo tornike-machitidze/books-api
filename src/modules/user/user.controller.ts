@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Request, Response } from 'express';
 import userService, { UserService } from './user.service';
 import { RegisterUserInterface } from './user.interface';

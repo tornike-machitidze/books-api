@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import jwt from 'jsonwebtoken';
 
 import { getRepository } from '../../database';

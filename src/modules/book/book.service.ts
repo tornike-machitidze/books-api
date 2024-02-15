@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { getRepository } from '../../database';
 import { BookEntity } from './book.entity';
 import { CreateBookInterface } from './interfaces/create-book.interface';
