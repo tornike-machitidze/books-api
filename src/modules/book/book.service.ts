@@ -7,8 +7,8 @@ import { UpdateBookInterface } from './interfaces/update-book.interface';
 export class BookService {
   constructor() {}
 
-  async getBooks() {
-    return await getRepository(BookEntity).find({});
+  async getBooks(take: number, skip: number) {
+    return await getRepository(BookEntity).findAndCount({ take, skip });
   }
 
   async getBook(id: string) {

@@ -7,7 +7,7 @@ API
 DONE:
 
 - swagger ✅
-- get books ✅
+- get books / pagination ✅
 - get book by id ✅
 - update book ✅
 - update last page ✅
@@ -17,7 +17,6 @@ DONE:
 IN PROGRESS:
 
 - tests ❌
-- pagination ❌
 
 STEPS TO START:
 

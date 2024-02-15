@@ -4,11 +4,11 @@ import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
 @Entity('user')
 export class UserEntity extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
-  id!: string;
+    id!: string;
 
   @Column()
-  email!: string;
+    email!: string;
 
   @Column()
-  password!: string;
+    password!: string;
 }

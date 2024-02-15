@@ -11,9 +11,14 @@ export class BookController {
   }
 
   async getBooks(req: Request, res: Response) {
+    const queries = req.query;
+
+    const take = Number(queries.take) || 10;
+    const skip = Number(queries.skip) || 0;
+
     try {
-      const books = await this.bookService.getBooks();
-      res.status(200).json({ data: books });
+      const [books, total] = await this.bookService.getBooks(take, skip);
+      res.status(200).json({ data: { books, total } });
     } catch (err) {
       console.log(err);
       res.status(500).json({ error: 'Internal Server Error' });
