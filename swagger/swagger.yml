@@ -60,6 +60,34 @@ paths:
               properties:
                 error:
                   type: string
+    get:
+      tags:
+        - books
+      summary: Get the books
+      parameters:
+        - in: query
+          name: take
+          type: string
+          required: false
+        - in: query
+          name: skip
+          type: string
+          required: false
+      responses:
+        '200':
+          description: Get books
+          content:
+            application/json:
+              properties:
+                data:
+                  $ref: '#/components/schemas/books'
+        '500':
+          description: Server error.
+          content:
+            application/json:
+              properties:
+                error:
+                  type: string
   /books/{id}:
     get:
       tags:
@@ -191,6 +219,12 @@ components:
       bearerFormat: JWT
 
   schemas:
+    books:
+      properties:
+        books:
+          type: array
+        total:
+          type: number
     book:
       properties:
         id:
