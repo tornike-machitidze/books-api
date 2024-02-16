@@ -27,15 +27,15 @@ STEPS TO START:
 
 3. from the root dir run: `npm install`
 
-### Option 1: If you have docker-compose installed and docker runned
+### Option 1: If you have Docker
 
 4. from the root dir run: `docker-compose up` it will starts postgres local server and awagger ui
 
 5. from the root dir run: `npm run dev`
 
-### Option 2: If you do not have docker and docker compose
+### Option 2: If you do not have Docker
 
-4. install postgres server locally in you computer.
+4. install postgres server and swagger ui locally in you computer.
 
 - you can see postgres credentials (in .env.example file):
   database = books
