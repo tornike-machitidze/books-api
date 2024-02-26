@@ -13,6 +13,7 @@ export const validateMiddleware = (schema: Joi.ObjectSchema, source: SUPPORTED_S
       await schema.validateAsync(req[source]);
       next();
     } catch (error) {
+      console.log(error);
       return res.status(403).json({ error: 'Bad request' });
     }
   };

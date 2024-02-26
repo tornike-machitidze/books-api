@@ -239,14 +239,10 @@ components:
           type: string
     create-book:
       properties:
-        id:
-          type: string
         title:
           type: string
         content:
           type: string
-        lastPage:
-          type: number
         author:
           type: string
     create-user:

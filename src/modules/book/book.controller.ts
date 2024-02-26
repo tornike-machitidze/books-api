@@ -4,7 +4,7 @@ import bookService, { BookService } from './book.service';
 import { UpdateBookInterface } from './interfaces/update-book.interface';
 
 export class BookController {
-  readonly bookService: BookService;
+  private readonly bookService: BookService;
 
   constructor(bookService: BookService) {
     this.bookService = bookService;
