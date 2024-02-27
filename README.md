@@ -1,5 +1,3 @@
-# In progress ....
-
 ## Book REST API.
 
 API
@@ -14,10 +12,6 @@ DONE:
 - create book ✅
 - authorization/authtentication ✅
 
-IN PROGRESS:
-
-- tests ❌ (in progress ...)
-- store book content as pages ❌ (in progress ...)
 
 STEPS TO START:
 
